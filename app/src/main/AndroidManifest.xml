@@ -16,6 +16,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".view.PropertyAnimationActivity" />
+        <activity android:name=".view.CustomViewActivity" />
     </application>
 
 </manifest>
