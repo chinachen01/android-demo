@@ -1,13 +1,9 @@
-package com.example.chenyong.android_demo.view;
+package com.example.chenyong.android_demo.activity;
 
-import android.animation.AnimatorSet;
-import android.animation.ObjectAnimator;
-import android.animation.ValueAnimator;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.view.animation.CycleInterpolator;
 
 import com.example.chenyong.android_demo.R;
 

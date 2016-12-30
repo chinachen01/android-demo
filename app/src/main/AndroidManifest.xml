@@ -8,15 +8,19 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".view.MainActivity">
+        <activity android:name=".activity.PropertyAnimationActivity" />
+        <activity android:name=".activity.CustomViewActivity" />
+        <activity android:name=".activity.ScrollerActivity" />
+        <activity
+            android:name=".activity.MainActivity"
+            android:label="@string/title_activity_main2"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".view.PropertyAnimationActivity" />
-        <activity android:name=".view.CustomViewActivity" />
     </application>
 
 </manifest>

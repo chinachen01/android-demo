@@ -1,4 +1,4 @@
-package com.example.chenyong.android_demo.view;
+package com.example.chenyong.android_demo.activity;
 
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
