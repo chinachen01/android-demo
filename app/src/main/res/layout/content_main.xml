@@ -25,4 +25,16 @@
         android:text="scroller"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
+    <Button
+        android:id="@+id/device"
+        android:onClick="onClick"
+        android:text="device"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <Button
+        android:id="@+id/dao"
+        android:onClick="onClick"
+        android:text="green dao"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 </LinearLayout>

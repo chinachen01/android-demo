@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <import type="com.example.chenyong.android_demo.activity.GreenDaoActivity.Presenter"/>
+        <variable
+            name="presenter"
+            type="Presenter"/>
+    </data>
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <EditText
+            android:layout_width="match_parent"
+            android:id="@+id/edit_id"
+            android:hint="id"
+            android:layout_height="wrap_content"/>
+        <EditText
+            android:id="@+id/edit_name"
+            android:hint="text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <Button
+            android:layout_width="match_parent"
+            android:id="@+id/btn_add"
+            android:text="add"
+            android:onClick="@{presenter.onClick}"
+            android:layout_height="wrap_content"/>
+        <Button
+            android:id="@+id/btn_update"
+            android:text="update"
+            android:onClick="@{presenter.onClick}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </LinearLayout>
+</layout>

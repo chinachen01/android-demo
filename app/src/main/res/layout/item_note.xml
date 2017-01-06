@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <import type="com.example.chenyong.android_demo.dao.Note"/>
+
+        <variable
+            name="model"
+            type="Note"/>
+    </data>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:text="@{@string/noteIdFormat(model.getId())}"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:text="@{@string/noteTextFormat(model.getText())}"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:text="@{@string/noteCommentFormat(model.getComment())}"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+</layout>

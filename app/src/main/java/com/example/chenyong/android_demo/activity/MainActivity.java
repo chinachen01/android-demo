@@ -52,6 +52,12 @@ public class MainActivity extends BaseActivity
             case R.id.scroller:
                 startActivity(new Intent(MainActivity.this, ScrollerActivity.class));
                 break;
+            case R.id.device:
+                startActivity(new Intent(MainActivity.this, DeviceActivity.class));
+                break;
+            case R.id.dao:
+                startActivity(new Intent(MainActivity.this, GreenDaoActivity.class));
+                break;
             default:
                 break;
         }

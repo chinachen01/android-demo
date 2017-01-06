@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 
 import com.example.chenyong.android_demo.inter.PermissionCallback;
 
@@ -17,7 +18,7 @@ import java.util.List;
 
 public class BaseActivity extends AppCompatActivity {
 
-    public static PermissionCallback sPermissionCallback;
+    public  PermissionCallback mPermissionCallback;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -31,14 +32,11 @@ public class BaseActivity extends AppCompatActivity {
         ActivityCollector.removeActivity(this);
     }
 
-    public static void requestPermissions(List<String> permissions, PermissionCallback callback) {
-
-    }
-
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if (sPermissionCallback == null) {
+        Log.d("permission", "result");
+        if (mPermissionCallback == null) {
             return;
         }
         List<String> deniedPermissions = new ArrayList<>();
@@ -50,9 +48,9 @@ public class BaseActivity extends AppCompatActivity {
             }
         }
         if (!deniedPermissions.isEmpty()) {
-            sPermissionCallback.onDenied(deniedPermissions);
+            mPermissionCallback.onDenied(deniedPermissions);
         } else {
-            sPermissionCallback.onGranted();
+            mPermissionCallback.onGranted();
         }
     }
 }

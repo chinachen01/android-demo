@@ -5,12 +5,11 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 
 import com.example.chenyong.android_demo.activity.ActivityCollector;
+import com.example.chenyong.android_demo.activity.BaseActivity;
 import com.example.chenyong.android_demo.inter.PermissionCallback;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static com.example.chenyong.android_demo.activity.BaseActivity.sPermissionCallback;
 
 /**
  * Created by focus on 16/12/29.
@@ -25,10 +24,11 @@ public final class PermissionUtil {
         if (callback == null || permissions.isEmpty()) {
             return;
         }
-        sPermissionCallback = callback;
+        BaseActivity baseActivity = (BaseActivity) ActivityCollector.getTopActivity();
+        baseActivity.mPermissionCallback = callback;
         List<String> deniedPermissions = new ArrayList<>();
         for (String permission : permissions) {
-            if (ContextCompat.checkSelfPermission(ActivityCollector.getTopActivity(), permission)
+            if (ContextCompat.checkSelfPermission(baseActivity, permission)
                     != PackageManager.PERMISSION_GRANTED) {
                 deniedPermissions.add(permission);
             }
@@ -36,9 +36,8 @@ public final class PermissionUtil {
         if (deniedPermissions.isEmpty()) {
             callback.onGranted();
         } else {
-            ActivityCompat.requestPermissions(ActivityCollector.getTopActivity(),
+            ActivityCompat.requestPermissions(baseActivity,
                     deniedPermissions.toArray(new String[]{}), PERMISSION_CODE);
-
         }
     }
 }
