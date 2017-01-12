@@ -17,7 +17,7 @@ import java.util.List;
  */
 
 public class BaseActivity extends AppCompatActivity {
-
+    protected String TAG = this.getClass().getSimpleName();
     public  PermissionCallback mPermissionCallback;
 
     @Override
