@@ -1,5 +1,17 @@
 apply plugin: 'com.android.application'
 apply plugin: 'org.greenrobot.greendao'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+buildscript {
+    ext.kotlin_version = '1.0.4'
+
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+}
 android {
     compileSdkVersion 24
     buildToolsVersion "24.0.2"
@@ -19,6 +31,9 @@ android {
     }
     dataBinding {
         enabled true
+    }
+    sourceSets {
+        main.java.srcDirs += "src/main/kotlin"
     }
 }
 
@@ -40,4 +55,6 @@ dependencies {
     compile 'io.reactivex:rxjava:1.1.6'
     compile 'com.jakewharton.rxbinding:rxbinding:1.0.0'
     testCompile 'junit:junit:4.12'
+    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+
 }

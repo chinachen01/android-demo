@@ -58,6 +58,9 @@ public class MainActivity extends BaseActivity
             case R.id.dao:
                 startActivity(new Intent(MainActivity.this, GreenDaoActivity.class));
                 break;
+            case R.id.hello_kotlin:
+                startActivity(new Intent(MainActivity.this, HelloKotlinActivity.class));
+                break;
             default:
                 break;
         }
