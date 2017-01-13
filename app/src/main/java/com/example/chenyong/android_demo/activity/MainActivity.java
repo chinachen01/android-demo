@@ -61,6 +61,9 @@ public class MainActivity extends BaseActivity
             case R.id.hello_kotlin:
                 startActivity(new Intent(MainActivity.this, HelloKotlinActivity.class));
                 break;
+            case R.id.webview:
+                startActivity(new Intent(MainActivity.this, WebActivity.class));
+                break;
             default:
                 break;
         }
@@ -121,4 +124,16 @@ public class MainActivity extends BaseActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+    class Person {
+        private String name;
+
+        public Person(String name) {
+            this.name = name;
+        }
+        public String getName(){
+            return name;
+        }
+    }
 }
+

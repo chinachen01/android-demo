@@ -43,6 +43,12 @@
             android:onClick="onClick"
             android:text="hello kotlin"
             android:layout_height="wrap_content"/>
+        <Button
+            android:layout_width="match_parent"
+            android:id="@+id/webview"
+            android:onClick="onClick"
+            android:text="webview"
+            android:layout_height="wrap_content"/>
     </LinearLayout>
 </ScrollView>
 

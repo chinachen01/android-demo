@@ -10,7 +10,7 @@ import com.example.chenyong.android_demo.R
 import com.example.chenyong.android_demo.databinding.ActivityHelloKotlinBinding
 
 class HelloKotlinActivity : BaseActivity() {
-    var binding: ActivityHelloKotlinBinding?=null
+    var binding: ActivityHelloKotlinBinding? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this,R.layout.activity_hello_kotlin)
@@ -29,10 +29,16 @@ class HelloKotlinActivity : BaseActivity() {
         var activity: Activity? = a as? Activity
         Log.d(TAG, "activity:" + activity)
         var nullableList: List<Int?> = listOf(1, 2, null, 4)
-        var intList: List<Int> = nullableList.filterNotNull();
+        var intList: List<Int> = nullableList.filterNotNull()
         for (item in intList) {
             Log.d(TAG, "item:" + item)
         }
+        var numbers = listOf(1, 2, 3)
+        Log.d(TAG, "numbers1: $numbers")
+        var newNumbers = numbers.filter { num -> num%2 !=0 }
+        Log.d(TAG, "numbers2: $newNumbers")
+        Log.d(TAG, newNumbers.joinToString(prefix = "[",postfix = "]"))
+        numbers.any { it -> it%2==0}
     }
     inner class Presenter {
         fun onClick(view: View) {

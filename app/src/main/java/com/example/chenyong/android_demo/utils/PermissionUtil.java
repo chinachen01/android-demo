@@ -11,6 +11,8 @@ import com.example.chenyong.android_demo.inter.PermissionCallback;
 import java.util.ArrayList;
 import java.util.List;
 
+import kotlin.jvm.JvmStatic;
+
 /**
  * Created by focus on 16/12/29.
  */
@@ -20,6 +22,7 @@ public final class PermissionUtil {
     private PermissionUtil() {
 
     }
+    @JvmStatic
     public static void requestPermission(List<String> permissions, PermissionCallback callback) {
         if (callback == null || permissions.isEmpty()) {
             return;
