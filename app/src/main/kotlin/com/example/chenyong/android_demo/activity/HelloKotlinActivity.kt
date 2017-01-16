@@ -6,9 +6,10 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Toast
+import com.example.chenyong.android_demo.DEFAULT_STRING
 import com.example.chenyong.android_demo.R
 import com.example.chenyong.android_demo.databinding.ActivityHelloKotlinBinding
-
+import java.util.*
 class HelloKotlinActivity : BaseActivity() {
     var binding: ActivityHelloKotlinBinding? = null
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,6 +40,8 @@ class HelloKotlinActivity : BaseActivity() {
         Log.d(TAG, "numbers2: $newNumbers")
         Log.d(TAG, newNumbers.joinToString(prefix = "[",postfix = "]"))
         numbers.any { it -> it%2==0}
+        numbers.sortedBy { num -> num+1 }
+        numbers.sortedWith(Comparator { t1, t2 -> t1 - t2 })
     }
     inner class Presenter {
         fun onClick(view: View) {
