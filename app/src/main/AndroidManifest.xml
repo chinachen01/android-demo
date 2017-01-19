@@ -32,6 +32,8 @@
         <activity android:name=".activity.GreenDaoActivity"/>
         <activity android:name=".activity.HelloKotlinActivity"/>
         <activity android:name=".activity.WebActivity"/>
+        <activity android:name=".activity.AlgorithmActivity"/>
+        <activity android:name=".activity.HttpActivity"/>
     </application>
 
 </manifest>

@@ -1,6 +1,7 @@
 package com.example.chenyong.android_demo;
 
 import android.app.Application;
+import android.content.Context;
 
 import com.example.chenyong.android_demo.dao.DaoMaster;
 import com.example.chenyong.android_demo.dao.DaoSession;
@@ -14,9 +15,11 @@ import org.greenrobot.greendao.database.Database;
 
 public class DemoApp extends Application {
     private DaoSession mDaoSession;
+    public static Context sContext;
     @Override
     public void onCreate() {
         super.onCreate();
+        sContext = this;
         MyDataBaseOpenHelper helper = new MyDataBaseOpenHelper(this, "notes-db");
         Database db = helper.getWritableDb();
         mDaoSession = new DaoMaster(db).newSession();

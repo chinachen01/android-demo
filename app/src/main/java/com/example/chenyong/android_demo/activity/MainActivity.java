@@ -15,6 +15,8 @@ import android.view.View;
 
 import com.example.chenyong.android_demo.R;
 
+import java.util.List;
+
 public class MainActivity extends BaseActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -42,6 +44,7 @@ public class MainActivity extends BaseActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        List list = null;
     }
 
     public void onClick(View view) {
@@ -63,6 +66,12 @@ public class MainActivity extends BaseActivity
                 break;
             case R.id.webview:
                 startActivity(new Intent(MainActivity.this, WebActivity.class));
+                break;
+            case R.id.http:
+                startActivity(new Intent(MainActivity.this, HttpActivity.class));
+                break;
+            case R.id.algorithm:
+                startActivity(new Intent(MainActivity.this, AlgorithmActivity.class));
                 break;
             default:
                 break;
@@ -117,7 +126,6 @@ public class MainActivity extends BaseActivity
         } else if (id == R.id.nav_share) {
 
         } else if (id == R.id.nav_send) {
-
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

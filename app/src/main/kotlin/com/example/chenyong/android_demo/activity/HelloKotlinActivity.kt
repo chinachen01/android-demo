@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Toast
-import com.example.chenyong.android_demo.DEFAULT_STRING
 import com.example.chenyong.android_demo.R
 import com.example.chenyong.android_demo.databinding.ActivityHelloKotlinBinding
 import java.util.*
@@ -56,3 +55,4 @@ class HelloKotlinActivity : BaseActivity() {
         Toast.makeText(applicationContext, message, duration).show()
     }
 }
+

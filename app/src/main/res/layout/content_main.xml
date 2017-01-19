@@ -17,18 +17,21 @@
             android:id="@+id/custom_view"
             android:onClick="onClick"
             android:text="自定义view"
+            android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
         <Button
             android:id="@+id/scroller"
             android:onClick="onClick"
             android:text="scroller"
+            android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
         <Button
             android:id="@+id/device"
             android:onClick="onClick"
             android:text="device"
+            android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
         <Button
@@ -48,6 +51,19 @@
             android:id="@+id/webview"
             android:onClick="onClick"
             android:text="webview"
+            android:visibility="gone"
+            android:layout_height="wrap_content"/>
+        <Button
+            android:layout_width="match_parent"
+            android:text="http"
+            android:onClick="onClick"
+            android:id="@+id/http"
+            android:layout_height="wrap_content"/>
+        <Button
+            android:layout_width="match_parent"
+            android:text="algorithm"
+            android:onClick="onClick"
+            android:id="@+id/algorithm"
             android:layout_height="wrap_content"/>
     </LinearLayout>
 </ScrollView>
