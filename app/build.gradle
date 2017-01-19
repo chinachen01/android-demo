@@ -12,6 +12,7 @@ buildscript {
     ext.logging_interceptror_version = '3.4.1'
     ext.retrofit_version = '2.1.0'
     ext.suppot_version = '24.2.1'
+    ext.dagger_version = '2.8'
     repositories {
         jcenter()
     }
@@ -73,4 +74,8 @@ dependencies {
     compile "io.reactivex:rxandroid:$rxandroid_version"
     compile "io.reactivex:rxjava:$rxjava_version"
     compile 'com.jakewharton.rxbinding:rxbinding:1.0.0'
+    //dagger
+    compile "com.google.dagger:dagger:$dagger_version"
+    annotationProcessor "com.google.dagger:dagger-compiler:$dagger_version"
+    kapt "com.google.dagger:dagger-compiler:$dagger_version"
 }

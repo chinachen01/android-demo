@@ -34,6 +34,7 @@
         <activity android:name=".activity.WebActivity"/>
         <activity android:name=".activity.AlgorithmActivity"/>
         <activity android:name=".activity.HttpActivity"/>
+        <activity android:name=".activity.InjectActivity"/>
     </application>
 
 </manifest>

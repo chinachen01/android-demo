@@ -1,15 +1,20 @@
 package com.example.chenyong.android_demo.activity;
 
+import android.content.SharedPreferences;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
+import android.util.Log;
 import android.view.View;
 
 import com.example.chenyong.android_demo.DemoApp;
 import com.example.chenyong.android_demo.R;
 import com.example.chenyong.android_demo.adapter.NoteAdapter;
+import com.example.chenyong.android_demo.dagger.ActivityComponent;
+import com.example.chenyong.android_demo.dagger.ActivityModules;
+import com.example.chenyong.android_demo.dagger.DaggerActivityComponent;
+import com.example.chenyong.android_demo.dagger.SpQualifier;
 import com.example.chenyong.android_demo.dao.DaoSession;
 import com.example.chenyong.android_demo.dao.Note;
 import com.example.chenyong.android_demo.dao.NoteDao;
@@ -22,16 +27,24 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+import javax.inject.Inject;
+
 /**
  * Created by focus on 17/1/5.
  */
 
-public class GreenDaoActivity extends AppCompatActivity {
+public class GreenDaoActivity extends BaseActivity {
     private ActivityGreenDaoBinding mBinding;
     private long i = 1000;
     private  DaoSession daoSession;
     private Query<Note> mNoteQuery;
     private NoteAdapter mNoteAdapter;
+    @Inject
+    @SpQualifier("share1")
+    SharedPreferences mSharedPreferences;
+    @Inject
+    @SpQualifier("share2")
+    SharedPreferences mSharedPreferences2;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +56,13 @@ public class GreenDaoActivity extends AppCompatActivity {
         mBinding.recycler.setLayoutManager(new LinearLayoutManager(this));
         mBinding.recycler.setAdapter(mNoteAdapter);
         updateView();
+        ActivityComponent component = DaggerActivityComponent.builder().applicationComponent(((DemoApp)getApplication()).getApplicationComponent())
+                .activityModules(new ActivityModules(this))
+                .build();
+        component.inject(this);
+        Log.d(TAG, "onCreate: mSharedPreferences" + mSharedPreferences);
+        Log.d(TAG, "onCreate: mSharedPreferences2" + mSharedPreferences2);
+
     }
 
     private void updateView() {

@@ -73,6 +73,9 @@ public class MainActivity extends BaseActivity
             case R.id.algorithm:
                 startActivity(new Intent(MainActivity.this, AlgorithmActivity.class));
                 break;
+            case R.id.dagger:
+                startActivity(new Intent(MainActivity.this, InjectActivity.class));
+                break;
             default:
                 break;
         }

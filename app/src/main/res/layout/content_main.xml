@@ -11,7 +11,7 @@
         android:paddingBottom="@dimen/activity_vertical_margin"
         android:paddingLeft="@dimen/activity_horizontal_margin"
         android:paddingRight="@dimen/activity_horizontal_margin"
-        android:paddingTop="@dimen/activity_vertical_margin"
+        android:paddingTop="100dp"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
         <Button
             android:id="@+id/custom_view"
@@ -64,6 +64,12 @@
             android:text="algorithm"
             android:onClick="onClick"
             android:id="@+id/algorithm"
+            android:layout_height="wrap_content"/>
+        <Button
+            android:layout_width="match_parent"
+            android:text="dagger"
+            android:onClick="onClick"
+            android:id="@+id/dagger"
             android:layout_height="wrap_content"/>
     </LinearLayout>
 </ScrollView>
