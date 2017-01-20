@@ -2,6 +2,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'org.greenrobot.greendao'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'me.tatarka.retrolambda'
 buildscript {
     //manage the versions of all dependencies
     ext.kotlin_version = '1.0.4'
@@ -13,11 +14,14 @@ buildscript {
     ext.retrofit_version = '2.1.0'
     ext.suppot_version = '24.2.1'
     ext.dagger_version = '2.8'
+    ext.lambda_version = '3.4.0'
+    ext.guava_version = '20.0'
     repositories {
         jcenter()
     }
     dependencies {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath "me.tatarka:gradle-retrolambda:$lambda_version"
     }
 }
 android {
@@ -26,7 +30,7 @@ android {
     defaultConfig {
         applicationId "com.example.chenyong.android_demo"
         minSdkVersion 15
-        targetSdkVersion 24
+        targetSdkVersion 23
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -47,6 +51,10 @@ android {
     }
     kapt {
         generateStubs = true
+    }
+    compileOptions {
+        targetCompatibility 1.8
+        sourceCompatibility 1.8
     }
 }
 
@@ -78,4 +86,5 @@ dependencies {
     compile "com.google.dagger:dagger:$dagger_version"
     annotationProcessor "com.google.dagger:dagger-compiler:$dagger_version"
     kapt "com.google.dagger:dagger-compiler:$dagger_version"
+    //google guava in databinding
 }

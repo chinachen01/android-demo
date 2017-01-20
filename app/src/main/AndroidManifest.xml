@@ -7,7 +7,6 @@
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
     <uses-permission android:name="android.permission.INTERNET"/>
 
-
     <application
         android:name=".DemoApp"
         android:allowBackup="true"
@@ -29,7 +28,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".activity.DeviceActivity"/>
-        <activity android:name=".activity.GreenDaoActivity"/>
+        <activity android:name=".activity.GreenDaoActivity"
+                  android:windowSoftInputMode="adjustPan"
+            />
         <activity android:name=".activity.HelloKotlinActivity"/>
         <activity android:name=".activity.WebActivity"/>
         <activity android:name=".activity.AlgorithmActivity"/>
