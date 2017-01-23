@@ -7,9 +7,10 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.*;
 
-import com.example.chenyong.android_demo.R;
+import com.example.chenyong.android_demo.*;
 
 
 public class MainActivity extends BaseActivity
@@ -35,9 +36,9 @@ public class MainActivity extends BaseActivity
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
-
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        RxBus.INSTANCE.toObserverable().subscribe((event) -> Log.d(TAG, "onCreate: " + ((TapEvent) event).getName()));
     }
 
     public void onClick(View view) {

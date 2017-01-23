@@ -10,8 +10,7 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 
-import com.example.chenyong.android_demo.DemoApp;
-import com.example.chenyong.android_demo.R;
+import com.example.chenyong.android_demo.*;
 import com.example.chenyong.android_demo.adapter.NoteAdapter;
 import com.example.chenyong.android_demo.dagger.ActivityComponent;
 import com.example.chenyong.android_demo.dagger.ActivityModules;
@@ -79,6 +78,7 @@ public class GreenDaoActivity extends BaseActivity {
         linearLayout.setLayoutParams(lp);
         linearLayout.setOnClickListener((view) -> Log.d(TAG, "onCreate: foot view on click"));
         guide.addView(linearLayout);
+        RxBus.INSTANCE.send(new TapEvent("green dao event"));
     }
 
     private void updateView() {

@@ -7,9 +7,9 @@ buildscript {
     //manage the versions of all dependencies
     ext.kotlin_version = '1.0.4'
     ext.databinding_version = '2.2.0'
-    ext.rxandroid_version = '1.2.1'
+    ext.rxandroid_version = '2.0.1'
     ext.greendao_version = '3.2.0'
-    ext.rxjava_version = '1.1.6'
+    ext.rxjava_version = '2.0.1'
     ext.logging_interceptror_version = '3.4.1'
     ext.retrofit_version = '2.1.0'
     ext.suppot_version = '24.2.1'
@@ -56,6 +56,9 @@ android {
         targetCompatibility 1.8
         sourceCompatibility 1.8
     }
+    packagingOptions {
+        exclude 'META-INF/rxjava.properties'
+    }
 }
 
 greendao {
@@ -70,18 +73,18 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile "com.android.support:appcompat-v7:$suppot_version"
     compile "com.android.support:design:$suppot_version"
-    compile "org.greenrobot:greendao:$greendao_version"
+    compile("org.greenrobot:greendao:$greendao_version")
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     kapt "com.android.databinding:compiler:$databinding_version"
     //http retrofit
     compile "com.squareup.retrofit2:retrofit:$retrofit_version"
     compile "com.squareup.retrofit2:converter-gson:$retrofit_version"
-    compile "com.squareup.retrofit2:adapter-rxjava:$retrofit_version"
+    compile("com.squareup.retrofit2:adapter-rxjava:$retrofit_version")
     compile "com.squareup.okhttp3:logging-interceptor:$logging_interceptror_version"
     //rx
-    compile "io.reactivex:rxandroid:$rxandroid_version"
-    compile "io.reactivex:rxjava:$rxjava_version"
-    compile 'com.jakewharton.rxbinding:rxbinding:1.0.0'
+    compile "io.reactivex.rxjava2:rxandroid:$rxandroid_version"
+    compile "io.reactivex.rxjava2:rxjava:$rxjava_version"
+    compile ('com.jakewharton.rxbinding:rxbinding:1.0.0')
     //dagger
     compile "com.google.dagger:dagger:$dagger_version"
     annotationProcessor "com.google.dagger:dagger-compiler:$dagger_version"

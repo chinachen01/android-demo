@@ -6,10 +6,13 @@ import android.util.Log
 import android.view.View
 import com.example.chenyong.android_demo.APIservice
 import com.example.chenyong.android_demo.R
+import com.example.chenyong.android_demo.RxBus
+import com.example.chenyong.android_demo.TapEvent
 import com.example.chenyong.android_demo.databinding.ActivityHttpBinding
 import com.example.chenyong.android_demo.http.RetrofitClient
 import rx.Observable
 import rx.Subscriber
+import rx.Subscription
 import rx.android.schedulers.AndroidSchedulers
 import rx.schedulers.Schedulers
 
@@ -19,14 +22,21 @@ import rx.schedulers.Schedulers
 class HttpActivity : BaseActivity() {
     lateinit var dataBinding: ActivityHttpBinding
     lateinit var api: APIservice
+    var subs:Subscription? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         dataBinding = DataBindingUtil.setContentView(this, R.layout.activity_http)
         api = RetrofitClient.getRetrofit().create(APIservice::class.java)
         normalObserval()
         dataBinding.presenter = Presenter()
+        subs = RxBus.toObserverable()
+                .subscribe{tapEvent ->kotlin.run { tapEvent as TapEvent; Log.d(TAG, "event: ${tapEvent.name}") }}
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        subs?.unsubscribe()
+    }
     private fun showUser() {
         api.getUserInfo("chinachen01asdd")
                 .observeOn(AndroidSchedulers.mainThread())
@@ -94,7 +104,6 @@ class HttpActivity : BaseActivity() {
                 .subscribe({string-> Log.d(TAG, "string: $string")},
                         {error -> Log.d(TAG, "error: $error")})
     }
-
     inner class Presenter {
         fun onClick(view: View) {
             when (view.id) {
