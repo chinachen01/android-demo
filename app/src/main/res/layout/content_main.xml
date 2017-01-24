@@ -71,6 +71,13 @@
             android:onClick="onClick"
             android:id="@+id/dagger"
             android:layout_height="wrap_content"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:text="path"
+            android:id="@+id/path"
+            android:onClick="onClick"
+            android:layout_height="wrap_content"/>
     </LinearLayout>
 </ScrollView>
 

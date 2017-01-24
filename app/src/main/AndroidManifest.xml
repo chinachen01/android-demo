@@ -36,6 +36,7 @@
         <activity android:name=".activity.AlgorithmActivity"/>
         <activity android:name=".activity.HttpActivity"/>
         <activity android:name=".activity.InjectActivity"/>
+        <activity android:name=".activity.PathActivity"/>
     </application>
 
 </manifest>

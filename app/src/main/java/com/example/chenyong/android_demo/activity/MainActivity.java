@@ -70,6 +70,9 @@ public class MainActivity extends BaseActivity
             case R.id.dagger:
                 startActivity(new Intent(MainActivity.this, InjectActivity.class));
                 break;
+            case R.id.path:
+                startActivity(new Intent(MainActivity.this, PathActivity.class));
+                break;
             default:
                 break;
         }
