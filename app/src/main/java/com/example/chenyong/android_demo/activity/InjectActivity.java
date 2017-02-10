@@ -9,10 +9,8 @@ import android.util.Log;
 
 import com.example.chenyong.android_demo.DemoApp;
 import com.example.chenyong.android_demo.R;
-import com.example.chenyong.android_demo.dagger.ActivityComponent;
-import com.example.chenyong.android_demo.dagger.ActivityModules;
-import com.example.chenyong.android_demo.dagger.DaggerActivityComponent;
-import com.example.chenyong.android_demo.dagger.SpQualifier;
+import com.example.chenyong.android_demo.antotation.Game;
+import com.example.chenyong.android_demo.dagger.*;
 
 import javax.inject.Inject;
 
@@ -43,5 +41,10 @@ public class InjectActivity extends BaseActivity {
         Log.d(TAG, "onCreate mSharedPreferences: " + mSharedPreferences);
         Log.d(TAG, "onCreate: " + mLocationManager);
         Log.d(TAG, "onCreate mSharedPreferences2: " + mSharedPreferences2);
+        setCurrentDay(1);
+    }
+
+    private void setCurrentDay(@Game.WeedDays int currentDay) {
+
     }
 }

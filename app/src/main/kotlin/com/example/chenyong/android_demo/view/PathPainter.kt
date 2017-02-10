@@ -16,23 +16,19 @@ class PathPainter(context: Context?, attrs: AttributeSet?, defStyleAttr: Int) : 
     constructor(context: Context?) : this(context, null, 0)
     constructor(context: Context?, attrs: AttributeSet?) : this(context, attrs, 0)
 
-    val pathMeasure: PathMeasure
-    val paint: Paint
-    val path: Path
-    val dstPath: Path
+    val pathMeasure: PathMeasure = PathMeasure()
+    val paint: Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+    val path: Path = Path()
+    val dstPath: Path = Path()
     val length: Float
     var animatorValue: Float = 0f
 
     init {
-        pathMeasure = PathMeasure()
-        paint = Paint(Paint.ANTI_ALIAS_FLAG)
         paint.style = Paint.Style.STROKE
         paint.strokeWidth = 5f
-        path = Path()
         path.addCircle(400f, 400f, 100f, Path.Direction.CW)
         pathMeasure.setPath(path, true)
         length = pathMeasure.length
-        dstPath = Path()
         var valueAnimator = ValueAnimator.ofFloat(0f, 1f)
         valueAnimator.addUpdateListener { animator ->
             kotlin.run {
@@ -49,7 +45,7 @@ class PathPainter(context: Context?, attrs: AttributeSet?, defStyleAttr: Int) : 
         super.onDraw(canvas)
         dstPath.reset()
         //硬件加速bug
-        dstPath.moveTo(0f, 0f)
+        dstPath.lineTo(0f, 0f)
         var stop = length * animatorValue
         pathMeasure.getSegment(0f, stop, dstPath, false)
         canvas?.drawPath(dstPath, paint)
