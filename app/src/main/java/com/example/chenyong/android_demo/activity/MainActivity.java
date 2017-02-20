@@ -73,6 +73,9 @@ public class MainActivity extends BaseActivity
             case R.id.path:
                 startActivity(new Intent(MainActivity.this, PathActivity.class));
                 break;
+            case R.id.intent_service:
+                startActivity(new Intent(MainActivity.this, IntentServiceActivity.class));
+                break;
             default:
                 break;
         }

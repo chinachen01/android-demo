@@ -37,6 +37,8 @@
         <activity android:name=".activity.HttpActivity"/>
         <activity android:name=".activity.InjectActivity"/>
         <activity android:name=".activity.PathActivity"/>
+        <activity android:name=".activity.IntentServiceActivity"/>
+        <service android:name=".service.UploadIntentService"/>
     </application>
 
 </manifest>
