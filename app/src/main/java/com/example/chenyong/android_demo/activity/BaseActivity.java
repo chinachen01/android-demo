@@ -6,8 +6,11 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.*;
+import android.widget.FrameLayout;
 
 import com.example.chenyong.android_demo.inter.PermissionCallback;
+import com.example.chenyong.android_demo.utils.SizeUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,5 +55,11 @@ public class BaseActivity extends AppCompatActivity {
         } else {
             mPermissionCallback.onGranted();
         }
+    }
+    protected void addFootView(View view) {
+        // 设置LayoutParams参数
+        FrameLayout.LayoutParams lp = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, SizeUtil.dpToPixel(100, this));
+        lp.gravity = Gravity.BOTTOM;
+        addContentView(view,lp);
     }
 }

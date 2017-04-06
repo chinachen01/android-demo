@@ -6,23 +6,15 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.util.Log;
-import android.view.View;
+import android.view.*;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 
 import com.example.chenyong.android_demo.*;
 import com.example.chenyong.android_demo.adapter.NoteAdapter;
-import com.example.chenyong.android_demo.dagger.ActivityComponent;
-import com.example.chenyong.android_demo.dagger.ActivityModules;
-import com.example.chenyong.android_demo.dagger.DaggerActivityComponent;
-import com.example.chenyong.android_demo.dagger.SpQualifier;
-import com.example.chenyong.android_demo.dao.DaoSession;
-import com.example.chenyong.android_demo.dao.Note;
-import com.example.chenyong.android_demo.dao.NoteDao;
-import com.example.chenyong.android_demo.dao.NoteType;
+import com.example.chenyong.android_demo.dagger.*;
+import com.example.chenyong.android_demo.dao.*;
 import com.example.chenyong.android_demo.databinding.ActivityGreenDaoBinding;
-import com.example.chenyong.android_demo.guide.AbstractGuide;
-import com.example.chenyong.android_demo.guide.MainGuide;
 
 import org.greenrobot.greendao.query.Query;
 
@@ -32,6 +24,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import io.reactivex.Flowable;
 import rx.Observable;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
@@ -71,14 +64,13 @@ public class GreenDaoActivity extends BaseActivity {
         Log.d(TAG, "onCreate: mSharedPreferences" + mSharedPreferences);
         Log.d(TAG, "onCreate: mSharedPreferences2" + mSharedPreferences2);
         testLambda();
-        AbstractGuide guide = new MainGuide(this);
-        LinearLayout linearLayout = new LinearLayout(this);
-        FrameLayout.LayoutParams lp = new FrameLayout.LayoutParams(100, 100);
-        linearLayout.setBackgroundColor(getResources().getColor(R.color.colorAccent));
-        linearLayout.setLayoutParams(lp);
-        linearLayout.setOnClickListener((view) -> Log.d(TAG, "onCreate: foot view on click"));
-        guide.addView(linearLayout);
         RxBus.INSTANCE.send(new TapEvent("green dao event"));
+        LinearLayout linearLayout = new LinearLayout(this);
+        linearLayout.setBackgroundColor(getResources().getColor(R.color.colorAccent));
+        FrameLayout.LayoutParams lp = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 100);
+        lp.gravity = Gravity.BOTTOM;
+        linearLayout.setOnClickListener((view) -> Log.d(TAG, "onCreate: foot view on click"));
+        addContentView(linearLayout, lp);
     }
 
     private void updateView() {
@@ -120,6 +112,7 @@ public class GreenDaoActivity extends BaseActivity {
                 onSub.onNext("234");
                 Thread.sleep(3000);
                 onSub.onNext("345");
+                throw new RuntimeException("add");
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -129,7 +122,21 @@ public class GreenDaoActivity extends BaseActivity {
                 .subscribeOn(Schedulers.io())
                 .subscribe((onNext) -> Log.d(TAG, "testLambda: " + onNext),
                         (onError) -> Log.d(TAG, "testLambda: " + onError.getMessage())
-                        );
+                );
+        Flowable<String> flowable = Flowable.fromCallable(() -> {
+            Thread.sleep(3000);
+            String str = "123";
+            if (str.equals("123")) {
+                throw new RuntimeException("error:123");
+            }
+            return "123123";
+        });
+        flowable.subscribeOn(io.reactivex.schedulers.Schedulers.io())
+                .observeOn(io.reactivex.android.schedulers.AndroidSchedulers.mainThread())
+                .subscribe(this::log,(error) -> Log.d(TAG, "testLambda: " + error.getMessage()));
+    }
 
+    private void log(String string) {
+        Log.d(TAG, "log: "+ string);
     }
 }

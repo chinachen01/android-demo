@@ -6,6 +6,8 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+
 
     <application
         android:name=".DemoApp"
@@ -28,9 +30,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".activity.DeviceActivity"/>
-        <activity android:name=".activity.GreenDaoActivity"
-                  android:windowSoftInputMode="adjustPan"
-            />
+        <activity
+            android:name=".activity.GreenDaoActivity"
+            android:windowSoftInputMode="adjustPan"/>
         <activity android:name=".activity.HelloKotlinActivity"/>
         <activity android:name=".activity.WebActivity"/>
         <activity android:name=".activity.AlgorithmActivity"/>
@@ -38,7 +40,21 @@
         <activity android:name=".activity.InjectActivity"/>
         <activity android:name=".activity.PathActivity"/>
         <activity android:name=".activity.IntentServiceActivity"/>
+        <activity android:name=".activity.NestedScrollerViewActivity"/>
+        <activity android:name=".activity.RecyclerActivity" />
         <service android:name=".service.UploadIntentService"/>
+
+        <activity
+            android:name=".activity.ScrollingActivity"
+            android:label="@string/title_activity_scrolling"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+        <activity
+            android:name=".activity.FullscreenActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_fullscreen"
+            android:theme="@style/FullscreenTheme">
+        </activity>
     </application>
 
 </manifest>

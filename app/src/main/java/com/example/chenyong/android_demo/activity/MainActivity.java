@@ -1,16 +1,26 @@
 package com.example.chenyong.android_demo.activity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.net.wifi.WifiInfo;
+import android.net.wifi.WifiManager;
+import android.os.Build;
 import android.os.Bundle;
-import android.support.design.widget.*;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.NavigationView;
+import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.*;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
 
-import com.example.chenyong.android_demo.*;
+import com.example.chenyong.android_demo.R;
+import com.example.chenyong.android_demo.RxBus;
+import com.example.chenyong.android_demo.TapEvent;
 
 
 public class MainActivity extends BaseActivity
@@ -39,6 +49,8 @@ public class MainActivity extends BaseActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         RxBus.INSTANCE.toObserverable().subscribe((event) -> Log.d(TAG, "onCreate: " + ((TapEvent) event).getName()));
+        teseWifi();
+        testDevice();
     }
 
     public void onClick(View view) {
@@ -76,10 +88,23 @@ public class MainActivity extends BaseActivity
             case R.id.intent_service:
                 startActivity(new Intent(MainActivity.this, IntentServiceActivity.class));
                 break;
+            case R.id.nested_scroller1:
+                startActivity(new Intent(MainActivity.this, NestedScrollerViewActivity.class));
+                break;
+            case R.id.coordinator:
+                startActivity(new Intent(MainActivity.this, ScrollingActivity.class));
+                break;
+            case R.id.fullscreen:
+                startActivity(new Intent(MainActivity.this, FullscreenActivity.class));
+                break;
+            case R.id.recycler:
+                startActivity(new Intent(MainActivity.this, RecyclerActivity.class));
+                break;
             default:
                 break;
         }
     }
+
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -142,9 +167,30 @@ public class MainActivity extends BaseActivity
         public Person(String name) {
             this.name = name;
         }
-        public String getName(){
+
+        public String getName() {
             return name;
         }
+    }
+
+    private void teseWifi() {
+        WifiManager mWifi = (WifiManager) getApplicationContext().getSystemService(Context.WIFI_SERVICE);
+        if (mWifi.isWifiEnabled()) {
+            WifiInfo wifiInfo = mWifi.getConnectionInfo();
+            String netName = wifiInfo.getSSID(); //获取被连接网络的名称
+            String netMac = wifiInfo.getBSSID(); //获取被连接网络的mac地址
+            String localMac = wifiInfo.getMacAddress();// 获得本机的MAC地址
+            Log.d("MainActivity", "---netName:" + netName);   //---netName:HUAWEI MediaPad
+            Log.d("MainActivity", "---netMac:" + netMac);     //---netMac:78:f5:fd:ae:b9:97
+            Log.d("MainActivity", "---localMac:" + localMac); //---localMac:BC:76:70:9F:56:BD
+        }
+    }
+
+    private void testDevice() {
+        Log.d(TAG, "testDevice: " + Build.MODEL);
+        Log.d(TAG, "testDevice: " + Build.MANUFACTURER);
+        Log.d(TAG, "testDevice: " + Build.VERSION.SDK_INT);
+        Log.d(TAG, "testDevice: " + Build.VERSION.RELEASE);
     }
 }
 
