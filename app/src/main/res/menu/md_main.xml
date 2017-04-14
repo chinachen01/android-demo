@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:id="@+id/action_fade"
+        app:showAsAction="never"
+        android:title="fade"
+        />
+    <item
+        android:id="@+id/action_slid"
+        android:title="slide"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_explode"
+        android:title="explode"
+        app:showAsAction="never" />
+</menu>

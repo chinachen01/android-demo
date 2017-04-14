@@ -2,11 +2,9 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <ImageView
-        android:layout_width="200dp"
-        android:id="@+id/meinv"
-        android:clickable="true"
-        android:onClick="onClick"
-        android:src="@drawable/girl"
-        android:layout_height="70dp" />
+    <Button
+        android:id="@+id/button_from"
+        android:text="from"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 </LinearLayout>

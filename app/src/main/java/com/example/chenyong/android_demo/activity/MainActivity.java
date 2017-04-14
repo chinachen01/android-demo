@@ -21,6 +21,7 @@ import android.view.View;
 import com.example.chenyong.android_demo.R;
 import com.example.chenyong.android_demo.RxBus;
 import com.example.chenyong.android_demo.TapEvent;
+import com.example.chenyong.android_demo.material.MdMainActivity;
 
 
 public class MainActivity extends BaseActivity
@@ -99,6 +100,12 @@ public class MainActivity extends BaseActivity
                 break;
             case R.id.recycler:
                 startActivity(new Intent(MainActivity.this, RecyclerActivity.class));
+                break;
+            case R.id.drawable:
+                startActivity(new Intent(MainActivity.this, DrawableActivity.class));
+                break;
+            case R.id.material:
+                startActivity(new Intent(MainActivity.this, MdMainActivity.class));
                 break;
             default:
                 break;

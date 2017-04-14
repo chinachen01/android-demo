@@ -129,6 +129,22 @@
             android:layout_height="wrap_content"
             android:onClick="onClick"
             android:text="recycler" />
+
+        <Button
+            android:id="@+id/drawable"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onClick"
+            android:text="drawable" />
+
+        <Button
+            android:id="@+id/material"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onClick"
+            android:text="Material" />
+
+
     </LinearLayout>
 
 </android.support.v4.widget.NestedScrollView>

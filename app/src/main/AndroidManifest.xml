@@ -42,7 +42,11 @@
         <activity android:name=".activity.IntentServiceActivity"/>
         <activity android:name=".activity.NestedScrollerViewActivity"/>
         <activity android:name=".activity.RecyclerActivity" />
+        <activity android:name=".activity.DrawableActivity" />
+        <activity android:name=".material.MdMainActivity" />
+        <activity android:name=".material.ToActivity" />
         <service android:name=".service.UploadIntentService"/>
+
 
         <activity
             android:name=".activity.ScrollingActivity"
